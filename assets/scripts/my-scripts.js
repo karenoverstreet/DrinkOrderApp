@@ -8,8 +8,7 @@ $(document).ready(function() {
 	});
 
 	//CSS highlight class can be found in assets/styles/main.css
-	$('.checkbox-group').on('click', 'input:checkbox', function () {
-    console.log(this.checked);
+	$('input[type="checkbox"]').click(function(){
 	 	$(this).parent().toggleClass('highlight'); 
   });
 
