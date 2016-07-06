@@ -2,39 +2,39 @@
 var orderCount = 0;
 
 /* array of drink objects
-   each object has a value key with a camelCase drink name value 
-   and a label key with the display text for the drink */
+   each object has an id key with a camelCase drink id value 
+   and a label key with a value of the display text for the drink */
 var cocktails = [
   {
-    'value': 'focusedLady',
+    'id': 'focusedLady',
     'label': 'Focused Lady'
   },
   {
-    'value': 'strongLady',
+    'id': 'strongLady',
     'label': 'Strong Lady'
   },
   {
-    'value': 'frontEndPunch',
+    'id': 'frontEndPunch',
     'label': 'Front-End Punch'
   },
   {
-    'value': 'cachedOut',
+    'id': 'cachedOut',
     'label': 'Cached Out'
   },
   {
-    'value': 'httPapaya',
+    'id': 'httPapaya',
     'label': 'httPAPAYA://'
   },
   {
-    'value': 'nerdyDaiquiri',
+    'id': 'nerdyDaiquiri',
     'label': 'Nerdy Daiquiri'
   },
   {
-    'value': 'theAvernaCode',
+    'id': 'theAvernaCode',
     'label': 'The Averna Code'
   },
   {
-    'value': 'focusedTheMostest',
+    'id': 'focusedTheMostest',
     'label': 'Focused the Mostest'
   },
 ];
@@ -42,8 +42,8 @@ var cocktails = [
 // loadMenu function to add the drinks from the array to the page
 var loadMenu = function() {
   for (var i = 0; i < cocktails.length; i++) {
-    $('.checkbox-group').append(
-      '<label class="radio" for="' + cocktails[i].value + '"><input type="radio" id="' + cocktails[i].value + '" name="drink" value="' + cocktails[i].value + '">' + cocktails[i].label + '</label>'
+    $('.radio-group').append(
+      '<label class="radio" for="' + cocktails[i].id + '"><input type="radio" id="' + cocktails[i].id + '" name="drink" value="' + cocktails[i].label + '">' + cocktails[i].label + '</label>'
     );
   }
 };
@@ -53,20 +53,27 @@ var submitOrder = function() {
   orderCount++;
   var orderName = $("#order-form-input").val();
   console.log(orderName);
-  var drinkName = $("label[for='" + $("input[type='radio']:checked").attr("id") + "']").text();
+  var drinkName = $("input[type='radio']:checked").val();
   
+  // only add the order if a name has been entered
+    
   // only add orders if there is room left on the order queue
   if (orderCount <= 5) {
     // add order display
     $("#order-details").append("<h1>" + orderName + " would like a " + drinkName + "</h1>");
 
-    // update drink order count
-    $('#drink-count').html("Drinks Ordered: " + orderCount);
+    // call funciton to update drink order count
+    updateOrderCount(orderCount);
   }
   else {
     alert('Drink order queue is full.  Please try ordering again in a few minutes.');
   }
 };
+
+// updateOrderCount function with a parameter passed to itf
+var updateOrderCount = function(count) { 
+  $('#drink-count').html("Drinks Ordered: " + count); 
+}
 
 
 $(document).ready(function() {
