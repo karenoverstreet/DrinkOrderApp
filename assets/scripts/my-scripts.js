@@ -26,7 +26,7 @@ var submitOrder = function() {
   else {
 	alert('Drink order queue is full.  Please try ordering again in a few minutes.');
   }
-
+} // adds missing bracket
 // updateOrderCount function with a parameter passed to it (Worksheet Part 1: Step 9c)
 var updateOrderCount = function(count) { 
   $('#drink-count').html("Drinks Ordered: " + count); 
