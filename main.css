@@ -1,11 +1,15 @@
-.none { 
-	color: gray; 
+.none {
+	color: gray;
 }
 
-.queued { 
-	color: orange; 
+.queued {
+	color: orange;
 }
 
-.ready { 
-	color: green; 
+.ready {
+	color: green;
+}
+
+.in_progress {
+	color: blue
 }
